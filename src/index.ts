@@ -36,6 +36,8 @@ export function convertor(source: string, config: Config) {
 }
 function copy(originFilePath: string, dist: string, fileName: string, extension: string) {
   try {
+    if (!fs.existsSync(originFilePath))
+      return
     if (!fs.existsSync(dist))
       fs.mkdirSync(dist)
     copyFile(originFilePath, resolve(`${dist}/${fileName}.${extension}`)).catch((e) => {
