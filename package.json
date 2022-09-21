@@ -1,7 +1,7 @@
 {
   "name": "md-img-convertor",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "packageManager": "pnpm@7.12.0",
   "description": "",
   "author": "Kitiho <duanjipeng0328@gmail.com> (https://github.com/kitiho/)",
