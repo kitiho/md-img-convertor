@@ -28,16 +28,16 @@ export function convertor(source: string, config: Config) {
     const originFilePath = item.href.replace(' ', '%20')
     const fileName = item.text
     const extension = getExtension(item.href)
-    copy(originFilePath, imgDist, fileName, extension)
-    if (folderLink)
-      res = res.replace(item.href, `${folderLink}/${fileName}.${extension}`)
+    if (fs.existsSync(originFilePath)) {
+      copy(originFilePath, imgDist, fileName, extension)
+      if (folderLink)
+        res = res.replace(item.href, `${folderLink}/${fileName}.${extension}`)
+    }
   }
   return res
 }
 function copy(originFilePath: string, dist: string, fileName: string, extension: string) {
   try {
-    if (!fs.existsSync(originFilePath))
-      return
     if (!fs.existsSync(dist))
       fs.mkdirSync(dist)
     copyFile(originFilePath, resolve(`${dist}/${fileName}.${extension}`)).catch((e) => {
